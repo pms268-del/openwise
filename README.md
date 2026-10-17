@@ -102,7 +102,7 @@ db/migrations          PostGIS schema; RLS enabled with no client policies (serv
 2. Create a private Storage bucket named `evidence`.
 3. Set the env vars from `.env.example` in Vercel, including `SESSION_SECRET` and `CRON_SECRET`.
 4. Add a Stripe webhook pointing to `/api/stripe/webhook` for `checkout.session.completed`, `checkout.session.async_payment_succeeded`, `checkout.session.expired` and `checkout.session.async_payment_failed`.
-5. Vercel Hobby plans allow only daily crons, so on Hobby either upgrade or call `/api/jobs/run` from an external scheduler.
+5. `vercel.json` schedules a daily backstop drain (Hobby-plan compatible). Jobs normally run right after each action and while users wait; on Pro you can tighten the cron to `*/5 * * * *`.
 
 ## Known limitations / next steps
 

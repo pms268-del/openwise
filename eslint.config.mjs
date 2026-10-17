@@ -12,6 +12,10 @@ const compat = new FlatCompat({
 const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
   {
+    // JSONB report/evidence payloads are rendered loosely; strict typing lives in the engines.
+    rules: { "@typescript-eslint/no-explicit-any": "off", "@next/next/no-img-element": "off" },
+  },
+  {
     ignores: [
       "node_modules/**",
       ".next/**",

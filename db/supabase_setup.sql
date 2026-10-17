@@ -441,7 +441,6 @@ end $$;
 create table if not exists schema_migrations (name text primary key, applied_at timestamptz default now());
 insert into schema_migrations (name) values ('001_init.sql'), ('002_rls.sql') on conflict do nothing;
 alter table schema_migrations enable row level security;
-\restrict 6uI7371wU3xYIoNQlMe0CENIprh4LN1YmkUjattyUvWcX2U7yJPDK4MQ5ffASXc
 INSERT INTO public.organizations VALUES ('68804e61-9f81-4de8-bfb7-7cc04a061b35', 'SiteIQ Platform', 'platform', '2026-10-17 16:57:36.92699+00');
 INSERT INTO public.organizations VALUES ('dae877f3-c7c6-4c6b-9a36-7a016a59401f', 'Partner Brokerage (demo)', 'brokerage', '2026-10-17 16:57:37.062854+00');
 INSERT INTO public.organizations VALUES ('0b46ae79-1367-4309-8411-ce7b7ed23378', 'Demo Coffee Co.', 'sme', '2026-10-17 16:57:37.103102+00');
@@ -485,7 +484,6 @@ INSERT INTO public.property_contacts VALUES ('816f744f-28ce-4d39-b236-e02e03aaa7
 INSERT INTO public.property_contacts VALUES ('4df28ad8-dd5c-4160-a1ba-a2e02a6e3a4a', 'b6c5e238-fd5b-46b0-9442-7e68c3d14cba', 'landlord');
 INSERT INTO public.property_contacts VALUES ('f802478e-fe16-41da-b80f-9f17bfcae536', '52ebb98e-af74-4a30-8012-5132e4ff7943', 'landlord');
 INSERT INTO public.property_contacts VALUES ('99d87dd5-7f48-4b75-a4c4-67c0a559cea2', 'b44739ab-e1b0-4607-a037-51a75681bb59', 'landlord');
-\unrestrict 6uI7371wU3xYIoNQlMe0CENIprh4LN1YmkUjattyUvWcX2U7yJPDK4MQ5ffASXc
 
 -- Private Storage bucket for inspection evidence (Supabase only; skipped elsewhere).
 do $$ begin

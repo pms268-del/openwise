@@ -11,7 +11,8 @@ function create(): postgres.Sql {
     max: Number(process.env.DB_POOL_MAX ?? 5),
     idle_timeout: 20,
     connect_timeout: 10,
-    prepare: !url.includes("pooler.supabase.com"), // Supavisor transaction mode disallows prepared statements
+    // Supabase transaction poolers (shared *.pooler.supabase.com or dedicated :6543) disallow prepared statements.
+    prepare: !(url.includes("pooler.supabase.com") || /:6543\//.test(url)),
     transform: { undefined: null },
     types: {
       numeric: { to: 1700, from: [1700], serialize: (x: unknown) => String(x), parse: (x: string) => Number(x) },
